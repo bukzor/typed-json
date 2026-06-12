@@ -1,0 +1,10 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: bc623f4
+_src_path: ./template.python-project
+author_email: workitharder@gmail.com
+author_name: Buck Evan
+description: json.loads that returns a runtime-checked recursive JsonValue instead
+    of Any
+github_username: bukzor
+project_name: typed-json
+python_version: '3.12'

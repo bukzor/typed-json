@@ -1,0 +1,17 @@
+{
+  "name": "typed-json",
+  "version": "0.0.0",
+  "description": "json.loads that returns a runtime-checked recursive JsonValue instead of Any",
+  "private": true,
+  "packageManager": "pnpm@9.15.9",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Buck Evan",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "prettier": "^3.6.2",
+    "prettier-plugin-toml": "^2.0.6",
+    "pyright": "^1.1.405"
+  }
+}
