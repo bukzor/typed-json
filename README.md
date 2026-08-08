@@ -52,11 +52,15 @@ Also available: `is_json_primitive`, `is_json_array`, `is_json_object`.
 ## Install
 
 ```bash
-uv add typed-json   # or: pip install typed-json
+uv add python-typed-json   # or: pip install python-typed-json
 ```
+
+The PyPI name carries a `python-` prefix because an unrelated, dormant
+`typedjson` project blocks the bare name; the module you import is plain
+`typed_json`, in the tradition of `python-dateutil` and `python-dotenv`.
 
 Requires Python ≥ 3.12 (PEP 695 `type` statements). Zero runtime dependencies.
 
 ## License
 
-MIT
+Apache-2.0

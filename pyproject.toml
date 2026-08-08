@@ -1,5 +1,5 @@
 [project]
-name = "typed-json"
+name = "python-typed-json"
 version = "0.1.0"
 description = "stdlib json.loads/dumps typed as a recursive JsonValue instead of Any"
 readme = "README.md"
