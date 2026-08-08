@@ -4,9 +4,10 @@ stdlib `json.loads`/`dumps`, typed as a recursive `JsonValue` instead of `Any`.
 
 `json.loads` is annotated `-> Any`, which silently switches off type checking
 for everything you do with the result. `typed-json` narrows that boundary to
-`JsonValue` — a recursive union (`None | bool | int | float | str | list | dict`)
-that the type checker can actually follow — so a single un-typed value can't
-quietly poison the types downstream of it.
+`JsonValue` — a recursive union
+(`None | bool | int | float | str | list | dict`) that the type checker can
+actually follow — so a single un-typed value can't quietly poison the types
+downstream of it.
 
 ```python
 from typed_json import loads, dumps
@@ -25,12 +26,12 @@ That's the whole promise — nothing more, nothing less.
   cost** — no validation pass.
 - **`dumps` / `dump`** accept only `JsonValue`. Because that type is exactly the
   set of natively-serializable values, the checker rejects a `set`/`datetime`
-  *statically*, and no `default=` hook is ever needed.
+  _statically_, and no `default=` hook is ever needed.
 
 ## When stdlib's guarantee doesn't apply: the guards
 
 For a value of genuinely unknown origin — an `object`/`Any` from another
-library, a YAML/msgpack/pickle load, hand-built data — cast is *not* sound.
+library, a YAML/msgpack/pickle load, hand-built data — cast is _not_ sound.
 Reach for the `TypeGuard`s, which validate at runtime by recursing the tree:
 
 ```python

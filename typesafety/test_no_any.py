@@ -9,8 +9,11 @@ no-op). The one operation that also raises at runtime is wrapped in
 from typing import assert_type
 
 import pytest
-
 from typed_json import JsonValue, dumps, loads
+
+# Formatting is semantic here: each "# E:" comment must share a line with the
+# expression that produces the error, or pytest-pyright cannot match them.
+# fmt: off
 
 
 class DescribeLoads:

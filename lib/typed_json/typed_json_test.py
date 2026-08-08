@@ -5,7 +5,7 @@ from typed_json import dumps, is_json_value, loads
 
 class DescribeLoadsDumpsRoundTrip:
     def it_round_trips_each_json_shape(self) -> None:
-        for text in ('null', 'true', '42', '2.5', '"s"', '[1, 2]', '{"a": 1}'):
+        for text in ("null", "true", "42", "2.5", '"s"', "[1, 2]", '{"a": 1}'):
             assert dumps(loads(text)) == text
 
     def it_parses_nested_structures(self) -> None:

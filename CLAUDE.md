@@ -37,7 +37,8 @@ This project was generated from a copier template. The template has already been
 configured with your project details:
 
 - Project name: typed-json
-- Description: json.loads that returns a runtime-checked recursive JsonValue instead of Any
+- Description: json.loads that returns a runtime-checked recursive JsonValue
+  instead of Any
 - Python version: 3.12
 
 To add dependencies, edit `pyproject.toml` and run `uv sync`.
