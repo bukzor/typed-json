@@ -3,8 +3,13 @@ name = "typed-json"
 version = "0.1.0"
 description = "stdlib json.loads/dumps typed as a recursive JsonValue instead of Any"
 readme = "README.md"
+license = "Apache-2.0"
+authors = [{ name = "Buck Evan", email = "workitharder+pypi@gmail.com" }]
 requires-python = ">=3.12"
 dependencies = []
+
+[project.urls]
+Repository = "https://github.com/bukzor/typed-json"
 
 [build-system]
 requires = ["hatchling"]
