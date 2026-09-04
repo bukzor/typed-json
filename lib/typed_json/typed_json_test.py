@@ -1,6 +1,8 @@
 """Runtime behavior of typed_json (type-level guarantees live in typesafety/)."""
 
-from typed_json import dumps, is_json_value, loads
+from io import StringIO
+
+from typed_json import dump, dumps, is_json_value, loads
 
 
 class DescribeLoadsDumpsRoundTrip:
@@ -23,3 +25,19 @@ class DescribeIsJsonValue:
 
     def it_rejects_non_string_keys(self) -> None:
         assert not is_json_value({1: "a"})
+
+
+class DescribeDumpsOptions:
+    def it_forwards_sort_keys(self) -> None:
+        assert dumps({"b": 1, "a": 2}, sort_keys=True) == '{"a": 2, "b": 1}'
+
+    def it_forwards_separators(self) -> None:
+        assert dumps({"a": 1, "b": 2}, separators=(",", ":")) == '{"a":1,"b":2}'
+
+    def it_forwards_ensure_ascii(self) -> None:
+        assert dumps("é", ensure_ascii=False) == '"é"'
+
+    def it_forwards_options_to_dump(self) -> None:
+        buffer = StringIO()
+        dump({"b": 1, "a": 2}, buffer, sort_keys=True)
+        assert buffer.getvalue() == '{"a": 2, "b": 1}'

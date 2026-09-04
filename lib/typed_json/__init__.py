@@ -60,18 +60,68 @@ def load(fp: IO[str] | IO[bytes]) -> JsonValue:
     return cast(JsonValue, json.load(fp))
 
 
-def dumps(obj: JsonValue, *, indent: int | None = None) -> str:
+def dumps(
+    obj: JsonValue,
+    *,
+    skipkeys: bool = False,
+    ensure_ascii: bool = True,
+    check_circular: bool = True,
+    allow_nan: bool = True,
+    indent: int | str | None = None,
+    separators: tuple[str, str] | None = None,
+    sort_keys: bool = False,
+) -> str:
     """Serialize a `JsonValue` to text. The input type guarantees serializability.
+
+    Every stdlib formatting option is forwarded except `cls` and `default`, which
+    are the two that would hand the encoder a value outside `JsonValue` -- the
+    guarantee this module exists to keep.
 
     >>> dumps({"a": [1, None]})
     '{"a": [1, null]}'
+    >>> dumps({"b": 1, "a": 2}, sort_keys=True)
+    '{"a": 2, "b": 1}'
     """
-    return json.dumps(obj, indent=indent)
+    return json.dumps(
+        obj,
+        skipkeys=skipkeys,
+        ensure_ascii=ensure_ascii,
+        check_circular=check_circular,
+        allow_nan=allow_nan,
+        indent=indent,
+        separators=separators,
+        sort_keys=sort_keys,
+    )
 
 
-def dump(obj: JsonValue, fp: IO[str], *, indent: int | None = None) -> None:
-    """Serialize a `JsonValue` to a file. The input type guarantees serializability."""
-    json.dump(obj, fp, indent=indent)
+def dump(
+    obj: JsonValue,
+    fp: IO[str],
+    *,
+    skipkeys: bool = False,
+    ensure_ascii: bool = True,
+    check_circular: bool = True,
+    allow_nan: bool = True,
+    indent: int | str | None = None,
+    separators: tuple[str, str] | None = None,
+    sort_keys: bool = False,
+) -> None:
+    """Serialize a `JsonValue` to a file. The input type guarantees serializability.
+
+    Options forward as in `dumps`, with `cls` and `default` withheld for the
+    same reason.
+    """
+    json.dump(
+        obj,
+        fp,
+        skipkeys=skipkeys,
+        ensure_ascii=ensure_ascii,
+        check_circular=check_circular,
+        allow_nan=allow_nan,
+        indent=indent,
+        separators=separators,
+        sort_keys=sort_keys,
+    )
 
 
 def is_json_primitive(value: object) -> TypeGuard[JsonPrimitive]:
